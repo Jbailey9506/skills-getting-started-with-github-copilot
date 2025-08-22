@@ -63,11 +63,12 @@ def signup_for_activity(activity_name: str, email: str):
     activity = activities[activity_name]
 
     # ...existing code...
-    if email in activity["participants"]:
-        return JSONResponse(
-            status_code=400,
-            content={"detail": "Student already registered for this activity."}
-    )
+if email in activity["participants"]:
+    return JSONResponse(
+        status_code=400,
+        content={"detail": "Student already registered for this activity."}
+    )  # <-- Added missing closing parenthesis
+# ...existing code...
 
     # Add student
     activity["participants"].append(email)
